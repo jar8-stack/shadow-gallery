@@ -1,0 +1,18 @@
+label{
+  color: black;
+}
+
+.row{
+  padding-left: 700px;
+  padding-top: 100px;
+}
+
+
+button{
+  color: black;
+  padding-left: 900px;
+  padding-right: 900px;
+  background-color: black;
+  color: white;
+  border: none;  
+}

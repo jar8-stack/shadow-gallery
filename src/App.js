@@ -6,6 +6,13 @@ import {Navbar} from './components/Navbar'
 import {Mision} from './components/Mision'
 import {Vision} from './components/Vision'
 import {Contactanos} from './components/Contactanos'
+import { Registro } from './components/Registrar'
+import { Login } from './components/Login'
+import { Recuperar } from './components/Recuperar'
+import Bygoogle from './components/Bygoogle'
+
+
+import style from './components/style.css'
 
 function App() {
   return (
@@ -19,10 +26,15 @@ function App() {
           <Route path="/contactanos" component={Contactanos}/>
           <Route path="/mision" component={Mision}/>
           <Route path="/vision" component={Vision}/>
+          <Route path="/inicio" component={Inicio}/>
+          <Route path="/registro" component={Registro}/>
+          <Route path="/recuperar" component={Recuperar}/>
+          <Route path="/login" component={Login}/>
           <Route path="/" component={Inicio}/>
 
 
         </Switch>
+        <Bygoogle/>
       </div>
     </Router>
 
