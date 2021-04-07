@@ -20,8 +20,8 @@ class Bygoogle extends Component{
             <div>
                 {
                     user
-                    ? <Redirect to='/inicio' />
-                    : <Redirect to='/' />
+                    ? <Redirect to='/Chat' />
+                  : <Redirect to='/' />
                 }
 
                 {

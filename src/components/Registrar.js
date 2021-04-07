@@ -16,7 +16,10 @@ export const Registro= () =>{
     e.preventDefault();
 
     if(password==repassword){
-        add(usuario, password)
+
+
+          add(usuario, password)
+  
     }else{
       alert("Contraseñas no coindicen");
     }
@@ -28,7 +31,7 @@ export const Registro= () =>{
 
 
     <div className="row">
-      
+
 
       <div  className="col-ms-4">
 

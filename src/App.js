@@ -9,6 +9,7 @@ import {Contactanos} from './components/Contactanos'
 import { Registro } from './components/Registrar'
 import { Login } from './components/Login'
 import { Recuperar } from './components/Recuperar'
+import { Chat } from './components/Chat'
 import Bygoogle from './components/Bygoogle'
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/registro" component={Registro}/>
           <Route path="/recuperar" component={Recuperar}/>
           <Route path="/login" component={Login}/>
+          <Route path="/chat" component={Chat}/>
           <Route path="/" component={Inicio}/>
 
 

@@ -11,6 +11,7 @@ export const Recuperar = () =>{
 
   const handleSubmit= (e) => {
     e.preventDefault()
+    alert("Correo de recuperación enviado")
     recuperar(usuario)
   }
 
