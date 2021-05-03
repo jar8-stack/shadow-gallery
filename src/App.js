@@ -9,13 +9,14 @@ import {Contactanos} from './components/Contactanos'
 import { Registro } from './components/Registrar'
 import { Login } from './components/Login'
 import { Recuperar } from './components/Recuperar'
-import { Chat } from './components/Chat'
+import {Chat} from './components/Chat'
 import Bygoogle from './components/Bygoogle'
 
 
 import style from './components/style.css'
 
 function App() {
+
   return (
 
     <Router>

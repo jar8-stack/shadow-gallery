@@ -1,222 +1,117 @@
-import React from 'react'
+import React, {useRef, useState} from 'react';
 import portada from './assets/img/portada.jpg'
 import comunidad from './assets/img/comunidad.jpg'
 
-export const Chat = () =>(
-  <div style={{marginLeft: 400, marginTop:-10}}>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-        {/*---- Include the above in your HEAD tag --------*/}
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-        {/*---- Include the above in your HEAD tag --------*/}
-        <meta charSet="UTF-8" /><meta name="robots" content="noindex" /><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" /><link rel="stylesheet prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css" />
-        <style className="cp-pen-styles" dangerouslySetInnerHTML={{__html: "body {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  min-height: 100vh;\n  background: #27ae60;\n  font-family: \"proxima-nova\", \"Source Sans Pro\", sans-serif;\n  font-size: 1em;\n  letter-spacing: 0.1px;\n  color: #32465a;\n  text-rendering: optimizeLegibility;\n  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);\n  -webkit-font-smoothing: antialiased;\n}\n\n#frame {\n  width: 95%;\n  min-width: 360px;\n  max-width: 1000px;\n  height: 92vh;\n  min-height: 300px;\n  max-height: 720px;\n  background: #E6EAEA;\n}\n@media screen and (max-width: 360px) {\n  #frame {\n    width: 100%;\n    height: 100vh;\n  }\n}\n#frame #sidepanel {\n  float: left;\n  min-width: 280px;\n  max-width: 340px;\n  width: 40%;\n  height: 100%;\n  background: #2c3e50;\n  color: #f5f5f5;\n  overflow: hidden;\n  position: relative;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel {\n    width: 58px;\n    min-width: 58px;\n  }\n}\n#frame #sidepanel #profile {\n  width: 80%;\n  margin: 25px auto;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile {\n    width: 100%;\n    margin: 0 auto;\n    padding: 5px 0 0 0;\n    background: #32465a;\n  }\n}\n#frame #sidepanel #profile.expanded .wrap {\n  height: 210px;\n  line-height: initial;\n}\n#frame #sidepanel #profile.expanded .wrap p {\n  margin-top: 20px;\n}\n#frame #sidepanel #profile.expanded .wrap i.expand-button {\n  -moz-transform: scaleY(-1);\n  -o-transform: scaleY(-1);\n  -webkit-transform: scaleY(-1);\n  transform: scaleY(-1);\n  filter: FlipH;\n  -ms-filter: \"FlipH\";\n}\n#frame #sidepanel #profile .wrap {\n  height: 60px;\n  line-height: 60px;\n  overflow: hidden;\n  -moz-transition: 0.3s height ease;\n  -o-transition: 0.3s height ease;\n  -webkit-transition: 0.3s height ease;\n  transition: 0.3s height ease;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap {\n    height: 55px;\n  }\n}\n#frame #sidepanel #profile .wrap img {\n  width: 50px;\n  border-radius: 50%;\n  padding: 3px;\n  border: 2px solid #e74c3c;\n  height: auto;\n  float: left;\n  cursor: pointer;\n  -moz-transition: 0.3s border ease;\n  -o-transition: 0.3s border ease;\n  -webkit-transition: 0.3s border ease;\n  transition: 0.3s border ease;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap img {\n    width: 40px;\n    margin-left: 4px;\n  }\n}\n#frame #sidepanel #profile .wrap img.online {\n  border: 2px solid #2ecc71;\n}\n#frame #sidepanel #profile .wrap img.away {\n  border: 2px solid #f1c40f;\n}\n#frame #sidepanel #profile .wrap img.busy {\n  border: 2px solid #e74c3c;\n}\n#frame #sidepanel #profile .wrap img.offline {\n  border: 2px solid #95a5a6;\n}\n#frame #sidepanel #profile .wrap p {\n  float: left;\n  margin-left: 15px;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap p {\n    display: none;\n  }\n}\n#frame #sidepanel #profile .wrap i.expand-button {\n  float: right;\n  margin-top: 23px;\n  font-size: 0.8em;\n  cursor: pointer;\n  color: #435f7a;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap i.expand-button {\n    display: none;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options {\n  position: absolute;\n  opacity: 0;\n  visibility: hidden;\n  width: 150px;\n  margin: 70px 0 0 0;\n  border-radius: 6px;\n  z-index: 99;\n  line-height: initial;\n  background: #435f7a;\n  -moz-transition: 0.3s all ease;\n  -o-transition: 0.3s all ease;\n  -webkit-transition: 0.3s all ease;\n  transition: 0.3s all ease;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options {\n    width: 58px;\n    margin-top: 57px;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options.active {\n  opacity: 1;\n  visibility: visible;\n  margin: 75px 0 0 0;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options.active {\n    margin-top: 62px;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options:before {\n  content: '';\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-left: 6px solid transparent;\n  border-right: 6px solid transparent;\n  border-bottom: 8px solid #435f7a;\n  margin: -8px 0 0 24px;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options:before {\n    margin-left: 23px;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options ul {\n  overflow: hidden;\n  border-radius: 6px;\n}\n#frame #sidepanel #profile .wrap #status-options ul li {\n  padding: 15px 0 30px 18px;\n  display: block;\n  cursor: pointer;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options ul li {\n    padding: 15px 0 35px 22px;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options ul li:hover {\n  background: #496886;\n}\n#frame #sidepanel #profile .wrap #status-options ul li span.status-circle {\n  position: absolute;\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  margin: 5px 0 0 0;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle {\n    width: 14px;\n    height: 14px;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {\n  content: '';\n  position: absolute;\n  width: 14px;\n  height: 14px;\n  margin: -3px 0 0 -3px;\n  background: transparent;\n  border-radius: 50%;\n  z-index: 0;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle:before {\n    height: 18px;\n    width: 18px;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options ul li p {\n  padding-left: 12px;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #profile .wrap #status-options ul li p {\n    display: none;\n  }\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-online span.status-circle {\n  background: #2ecc71;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-online.active span.status-circle:before {\n  border: 1px solid #2ecc71;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-away span.status-circle {\n  background: #f1c40f;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-away.active span.status-circle:before {\n  border: 1px solid #f1c40f;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-busy span.status-circle {\n  background: #e74c3c;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-busy.active span.status-circle:before {\n  border: 1px solid #e74c3c;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-offline span.status-circle {\n  background: #95a5a6;\n}\n#frame #sidepanel #profile .wrap #status-options ul li#status-offline.active span.status-circle:before {\n  border: 1px solid #95a5a6;\n}\n#frame #sidepanel #profile .wrap #expanded {\n  padding: 100px 0 0 0;\n  display: block;\n  line-height: initial !important;\n}\n#frame #sidepanel #profile .wrap #expanded label {\n  float: left;\n  clear: both;\n  margin: 0 8px 5px 0;\n  padding: 5px 0;\n}\n#frame #sidepanel #profile .wrap #expanded input {\n  border: none;\n  margin-bottom: 6px;\n  background: #32465a;\n  border-radius: 3px;\n  color: #f5f5f5;\n  padding: 7px;\n  width: calc(100% - 43px);\n}\n#frame #sidepanel #profile .wrap #expanded input:focus {\n  outline: none;\n  background: #435f7a;\n}\n#frame #sidepanel #search {\n  border-top: 1px solid #32465a;\n  border-bottom: 1px solid #32465a;\n  font-weight: 300;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #search {\n    display: none;\n  }\n}\n#frame #sidepanel #search label {\n  position: absolute;\n  margin: 10px 0 0 20px;\n}\n#frame #sidepanel #search input {\n  font-family: \"proxima-nova\",  \"Source Sans Pro\", sans-serif;\n  padding: 10px 0 10px 46px;\n  width: calc(100% - 25px);\n  border: none;\n  background: #32465a;\n  color: #f5f5f5;\n}\n#frame #sidepanel #search input:focus {\n  outline: none;\n  background: #435f7a;\n}\n#frame #sidepanel #search input::-webkit-input-placeholder {\n  color: #f5f5f5;\n}\n#frame #sidepanel #search input::-moz-placeholder {\n  color: #f5f5f5;\n}\n#frame #sidepanel #search input:-ms-input-placeholder {\n  color: #f5f5f5;\n}\n#frame #sidepanel #search input:-moz-placeholder {\n  color: #f5f5f5;\n}\n#frame #sidepanel #contacts {\n  height: calc(100% - 177px);\n  overflow-y: scroll;\n  overflow-x: hidden;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #contacts {\n    height: calc(100% - 149px);\n    overflow-y: scroll;\n    overflow-x: hidden;\n  }\n  #frame #sidepanel #contacts::-webkit-scrollbar {\n    display: none;\n  }\n}\n#frame #sidepanel #contacts.expanded {\n  height: calc(100% - 334px);\n}\n#frame #sidepanel #contacts::-webkit-scrollbar {\n  width: 8px;\n  background: #2c3e50;\n}\n#frame #sidepanel #contacts::-webkit-scrollbar-thumb {\n  background-color: #243140;\n}\n#frame #sidepanel #contacts ul li.contact {\n  position: relative;\n  padding: 10px 0 15px 0;\n  font-size: 0.9em;\n  cursor: pointer;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #contacts ul li.contact {\n    padding: 6px 0 46px 8px;\n  }\n}\n#frame #sidepanel #contacts ul li.contact:hover {\n  background: #32465a;\n}\n#frame #sidepanel #contacts ul li.contact.active {\n  background: #32465a;\n  border-right: 5px solid #435f7a;\n}\n#frame #sidepanel #contacts ul li.contact.active span.contact-status {\n  border: 2px solid #32465a !important;\n}\n#frame #sidepanel #contacts ul li.contact .wrap {\n  width: 88%;\n  margin: 0 auto;\n  position: relative;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #contacts ul li.contact .wrap {\n    width: 100%;\n  }\n}\n#frame #sidepanel #contacts ul li.contact .wrap span {\n  position: absolute;\n  left: 0;\n  margin: -2px 0 0 -2px;\n  width: 10px;\n  height: 10px;\n  border-radius: 50%;\n  border: 2px solid #2c3e50;\n  background: #95a5a6;\n}\n#frame #sidepanel #contacts ul li.contact .wrap span.online {\n  background: #2ecc71;\n}\n#frame #sidepanel #contacts ul li.contact .wrap span.away {\n  background: #f1c40f;\n}\n#frame #sidepanel #contacts ul li.contact .wrap span.busy {\n  background: #e74c3c;\n}\n#frame #sidepanel #contacts ul li.contact .wrap img {\n  width: 40px;\n  border-radius: 50%;\n  float: left;\n  margin-right: 10px;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #contacts ul li.contact .wrap img {\n    margin-right: 0px;\n  }\n}\n#frame #sidepanel #contacts ul li.contact .wrap .meta {\n  padding: 5px 0 0 0;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #contacts ul li.contact .wrap .meta {\n    display: none;\n  }\n}\n#frame #sidepanel #contacts ul li.contact .wrap .meta .name {\n  font-weight: 600;\n}\n#frame #sidepanel #contacts ul li.contact .wrap .meta .preview {\n  margin: 5px 0 0 0;\n  padding: 0 0 1px;\n  font-weight: 400;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  -moz-transition: 1s all ease;\n  -o-transition: 1s all ease;\n  -webkit-transition: 1s all ease;\n  transition: 1s all ease;\n}\n#frame #sidepanel #contacts ul li.contact .wrap .meta .preview span {\n  position: initial;\n  border-radius: initial;\n  background: none;\n  border: none;\n  padding: 0 2px 0 0;\n  margin: 0 0 0 1px;\n  opacity: .5;\n}\n#frame #sidepanel #bottom-bar {\n  position: absolute;\n  width: 100%;\n  bottom: 0;\n}\n#frame #sidepanel #bottom-bar button {\n  float: left;\n  border: none;\n  width: 50%;\n  padding: 10px 0;\n  background: #32465a;\n  color: #f5f5f5;\n  cursor: pointer;\n  font-size: 0.85em;\n  font-family: \"proxima-nova\",  \"Source Sans Pro\", sans-serif;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #bottom-bar button {\n    float: none;\n    width: 100%;\n    padding: 15px 0;\n  }\n}\n#frame #sidepanel #bottom-bar button:focus {\n  outline: none;\n}\n#frame #sidepanel #bottom-bar button:nth-child(1) {\n  border-right: 1px solid #2c3e50;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #bottom-bar button:nth-child(1) {\n    border-right: none;\n    border-bottom: 1px solid #2c3e50;\n  }\n}\n#frame #sidepanel #bottom-bar button:hover {\n  background: #435f7a;\n}\n#frame #sidepanel #bottom-bar button i {\n  margin-right: 3px;\n  font-size: 1em;\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #bottom-bar button i {\n    font-size: 1.3em;\n  }\n}\n@media screen and (max-width: 735px) {\n  #frame #sidepanel #bottom-bar button span {\n    display: none;\n  }\n}\n#frame .content {\n  float: right;\n  width: 60%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n@media screen and (max-width: 735px) {\n  #frame .content {\n    width: calc(100% - 58px);\n    min-width: 300px !important;\n  }\n}\n@media screen and (min-width: 900px) {\n  #frame .content {\n    width: calc(100% - 340px);\n  }\n}\n#frame .content .contact-profile {\n  width: 100%;\n  height: 60px;\n  line-height: 60px;\n  background: #f5f5f5;\n}\n#frame .content .contact-profile img {\n  width: 40px;\n  border-radius: 50%;\n  float: left;\n  margin: 9px 12px 0 9px;\n}\n#frame .content .contact-profile p {\n  float: left;\n}\n#frame .content .contact-profile .social-media {\n  float: right;\n}\n#frame .content .contact-profile .social-media i {\n  margin-left: 14px;\n  cursor: pointer;\n}\n#frame .content .contact-profile .social-media i:nth-last-child(1) {\n  margin-right: 20px;\n}\n#frame .content .contact-profile .social-media i:hover {\n  color: #435f7a;\n}\n#frame .content .messages {\n  height: auto;\n  min-height: calc(100% - 93px);\n  max-height: calc(100% - 93px);\n  overflow-y: scroll;\n  overflow-x: hidden;\n}\n@media screen and (max-width: 735px) {\n  #frame .content .messages {\n    max-height: calc(100% - 105px);\n  }\n}\n#frame .content .messages::-webkit-scrollbar {\n  width: 8px;\n  background: transparent;\n}\n#frame .content .messages::-webkit-scrollbar-thumb {\n  background-color: rgba(0, 0, 0, 0.3);\n}\n#frame .content .messages ul li {\n  display: inline-block;\n  clear: both;\n  float: left;\n  margin: 15px 15px 5px 15px;\n  width: calc(100% - 25px);\n  font-size: 0.9em;\n}\n#frame .content .messages ul li:nth-last-child(1) {\n  margin-bottom: 20px;\n}\n#frame .content .messages ul li.sent img {\n  margin: 6px 8px 0 0;\n}\n#frame .content .messages ul li.sent p {\n  background: #435f7a;\n  color: #f5f5f5;\n}\n#frame .content .messages ul li.replies img {\n  float: right;\n  margin: 6px 0 0 8px;\n}\n#frame .content .messages ul li.replies p {\n  background: #f5f5f5;\n  float: right;\n}\n#frame .content .messages ul li img {\n  width: 22px;\n  border-radius: 50%;\n  float: left;\n}\n#frame .content .messages ul li p {\n  display: inline-block;\n  padding: 10px 15px;\n  border-radius: 20px;\n  max-width: 205px;\n  line-height: 130%;\n}\n@media screen and (min-width: 735px) {\n  #frame .content .messages ul li p {\n    max-width: 300px;\n  }\n}\n#frame .content .message-input {\n  position: absolute;\n  bottom: 0;\n  width: 100%;\n  z-index: 99;\n}\n#frame .content .message-input .wrap {\n  position: relative;\n}\n#frame .content .message-input .wrap input {\n  font-family: \"proxima-nova\",  \"Source Sans Pro\", sans-serif;\n  float: left;\n  border: none;\n  width: calc(100% - 90px);\n  padding: 11px 32px 10px 8px;\n  font-size: 0.8em;\n  color: #32465a;\n}\n@media screen and (max-width: 735px) {\n  #frame .content .message-input .wrap input {\n    padding: 15px 32px 16px 8px;\n  }\n}\n#frame .content .message-input .wrap input:focus {\n  outline: none;\n}\n#frame .content .message-input .wrap .attachment {\n  position: absolute;\n  right: 60px;\n  z-index: 4;\n  margin-top: 10px;\n  font-size: 1.1em;\n  color: #435f7a;\n  opacity: .5;\n  cursor: pointer;\n}\n@media screen and (max-width: 735px) {\n  #frame .content .message-input .wrap .attachment {\n    margin-top: 17px;\n    right: 65px;\n  }\n}\n#frame .content .message-input .wrap .attachment:hover {\n  opacity: 1;\n}\n#frame .content .message-input .wrap button {\n  float: right;\n  border: none;\n  width: 50px;\n  padding: 12px 0;\n  cursor: pointer;\n  background: #32465a;\n  color: #f5f5f5;\n}\n@media screen and (max-width: 735px) {\n  #frame .content .message-input .wrap button {\n    padding: 16px 0;\n  }\n}\n#frame .content .message-input .wrap button:hover {\n  background: #435f7a;\n}\n#frame .content .message-input .wrap button:focus {\n  outline: none;\n}\n" }} />
-        {/*
+import './Chat.css';
 
-A concept for a chat interface.
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/analytics';
 
-Try writing a new message! :)
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {useCollectionData } from 'react-firebase-hooks/firestore';
 
 
-Follow me here:
-Twitter: https://twitter.com/thatguyemil
-Codepen: https://codepen.io/emilcarlsson/
-Website: http://emilcarlsson.se/
+const auth= firebase.auth();
+const firestore= firebase.firestore();
+const analytics = firebase.analytics();
 
-*/}
-        <div id="frame">
-          <div id="sidepanel">
-            <div id="profile">
-              <div className="wrap">
-                <img id="profile-img" src="http://emilcarlsson.se/assets/mikeross.png" className="online" alt="" />
-                <p>Mike Ross</p>
-                <i className="fa fa-chevron-down expand-button" aria-hidden="true" />
-                <div id="status-options">
-                  <ul>
-                    <li id="status-online" className="active"><span className="status-circle" /> <p>Online</p></li>
-                    <li id="status-away"><span className="status-circle" /> <p>Away</p></li>
-                    <li id="status-busy"><span className="status-circle" /> <p>Busy</p></li>
-                    <li id="status-offline"><span className="status-circle" /> <p>Offline</p></li>
-                  </ul>
-                </div>
-                <div id="expanded">
-                  <label htmlFor="twitter"><i className="fa fa-facebook fa-fw" aria-hidden="true" /></label>
-                  <input name="twitter" type="text" defaultValue="mikeross" />
-                  <label htmlFor="twitter"><i className="fa fa-twitter fa-fw" aria-hidden="true" /></label>
-                  <input name="twitter" type="text" defaultValue="ross81" />
-                  <label htmlFor="twitter"><i className="fa fa-instagram fa-fw" aria-hidden="true" /></label>
-                  <input name="twitter" type="text" defaultValue="mike.ross" />
-                </div>
-              </div>
-            </div>
-            <div id="search">
-              <label htmlFor><i className="fa fa-search" aria-hidden="true" /></label>
-              <input type="text" placeholder="Search contacts..." />
-            </div>
-            <div id="contacts">
-              <ul>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status online" />
-                    <img src="http://emilcarlsson.se/assets/louislitt.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Louis Litt</p>
-                      <p className="preview">You just got LITT up, Mike.</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact active">
-                  <div className="wrap">
-                    <span className="contact-status busy" />
-                    <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Harvey Specter</p>
-                      <p className="preview">Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status away" />
-                    <img src="http://emilcarlsson.se/assets/rachelzane.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Rachel Zane</p>
-                      <p className="preview">I was thinking that we could have chicken tonight, sounds good?</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status online" />
-                    <img src="http://emilcarlsson.se/assets/donnapaulsen.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Donna Paulsen</p>
-                      <p className="preview">Mike, I know everything! I'm Donna..</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status busy" />
-                    <img src="http://emilcarlsson.se/assets/jessicapearson.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Jessica Pearson</p>
-                      <p className="preview">Have you finished the draft on the Hinsenburg deal?</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status" />
-                    <img src="http://emilcarlsson.se/assets/haroldgunderson.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Harold Gunderson</p>
-                      <p className="preview">Thanks Mike! :)</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status" />
-                    <img src="http://emilcarlsson.se/assets/danielhardman.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Daniel Hardman</p>
-                      <p className="preview">We'll meet again, Mike. Tell Jessica I said 'Hi'.</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status busy" />
-                    <img src="http://emilcarlsson.se/assets/katrinabennett.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Katrina Bennett</p>
-                      <p className="preview">I've sent you the files for the Garrett trial.</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status" />
-                    <img src="http://emilcarlsson.se/assets/charlesforstman.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Charles Forstman</p>
-                      <p className="preview">Mike, this isn't over.</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="contact">
-                  <div className="wrap">
-                    <span className="contact-status" />
-                    <img src="http://emilcarlsson.se/assets/jonathansidwell.png" alt="" />
-                    <div className="meta">
-                      <p className="name">Jonathan Sidwell</p>
-                      <p className="preview"><span>You:</span> That's bullshit. This deal is solid.</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div id="bottom-bar">
-              <button id="addcontact"><i className="fa fa-user-plus fa-fw" aria-hidden="true" /> <span>Add contact</span></button>
-              <button id="settings"><i className="fa fa-cog fa-fw" aria-hidden="true" /> <span>Settings</span></button>
-            </div>
-          </div>
-          <div className="content">
-            <div className="contact-profile">
-              <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-              <p>Harvey Specter</p>
-              <div className="social-media">
-                <i className="fa fa-facebook" aria-hidden="true" />
-                <i className="fa fa-twitter" aria-hidden="true" />
-                <i className="fa fa-instagram" aria-hidden="true" />
-              </div>
-            </div>
-            <div className="messages">
-              <ul>
-                <li className="sent">
-                  <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                  <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
-                </li>
-                <li className="replies">
-                  <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                  <p>When you're backed against the wall, break the god damn thing down.</p>
-                </li>
-                <li className="replies">
-                  <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                  <p>Excuses don't win championships.</p>
-                </li>
-                <li className="sent">
-                  <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                  <p>Oh yeah, did Michael Jordan tell you that?</p>
-                </li>
-                <li className="replies">
-                  <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                  <p>No, I told him that.</p>
-                </li>
-                <li className="replies">
-                  <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                  <p>What are your choices when someone puts a gun to your head?</p>
-                </li>
-                <li className="sent">
-                  <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                  <p>What are you talking about? You do what they say or they shoot you.</p>
-                </li>
-                <li className="replies">
-                  <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                  <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any one of a hundred and forty six other things.</p>
-                </li>
-              </ul>
-            </div>
-            <div className="message-input">
-              <div className="wrap">
-                <input type="text" placeholder="Write your message..." />
-                <i className="fa fa-paperclip attachment" aria-hidden="true" />
-                <button className="submit"><i className="fa fa-paper-plane" aria-hidden="true" /></button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-)
+export const Chat = () =>{
+  const [user] = useAuthState(auth);
+
+  return(
+    <div className="app">
+    <center>
+    <header>
+      <h1>Mi chat 💬</h1>
+      <SignOut />
+      </header>
+
+      <section>
+        { user ? <ChatRoom /> : <SignIn />}
+      </section>
+      </center>
+    </div>
+  )
+
+}
+
+
+function SignOut(){
+
+
+  return auth.currentUser && (
+    <button className="sign-out" onClick={() => auth.signOut()} >Salir</button>
+  )
+}
+
+function SignIn(){
+  const signInWithGoogle= () =>{
+    const provider= new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+
+  }
+
+  return(<>
+    <button className="sign-in" onClick={signInWithGoogle}> Entrar con google </button>
+    <p>Bienvenido</p>
+
+
+    </>);
+}
+
+
+function ChatRoom(){
+
+  const dummy= useRef();
+  const messagesRef = firestore.collection('messages');
+  const query = messagesRef.orderBy('createAt').limit(25);
+
+  const [messages] = useCollectionData(query, {idField: 'id'});
+
+  const [formValue, setFormValue]= useState();
+
+  const sendMessage= async (e) =>{
+    e.preventDefault()
+    const {uid, photoURL}= auth.currentUser;
+
+    await messagesRef.add({
+      text: formValue,
+      createAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL
+    })
+    setFormValue('')
+    dummy.current.scrollIntoView({behavior: 'smooth'})
+  };
+
+  return(<>
+    <main>
+      {messages && messages.map(msg => <ChatMessages key = {msg.id} message = {msg} />)}
+      <span ref = {dummy}></span>
+    </main>
+
+    <form onSubmit = {sendMessage}>
+      <input value= {formValue} onChange= {(e)=> setFormValue(e.target.value)} placeholder="Escriba su mensaje" />
+      <button type="submit">Enviar</button>
+    </form>
+
+  </>);
+
+}
+
+function ChatMessages(promps){
+
+  const {text, uid, photoURL}= promps.message;
+  const messageClass= uid === auth.currentUser.uid ? 'sent':'recived'
+
+  return(<>
+    <div className= {`message ${messageClass}`} >
+    <img src={photoURL || 'data:image/png;base64,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'} />
+      <p>
+        {text}
+      </p>
+    </div>
+  </>)
+}
