@@ -2,10 +2,18 @@ import React, {Component} from 'react'
 import withFirebaseAuth from 'react-with-firebase-auth'
 import firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore';
+
+import 'firebase/analytics';
 import firebaseConfig from '../firebaseConfig'
 import {Redirect} from 'react-router-dom'
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
+if(firebase.apps.length === 0){
+    firebase.initializeApp(firebaseConfig);
+}
+
+
+//const firebaseApp = firebase.initializeApp(firebaseConfig)
 
 class Bygoogle extends Component{
 
@@ -37,7 +45,7 @@ class Bygoogle extends Component{
 
 }
 
-const firebaseAppAuth = firebaseApp.auth();
+const firebaseAppAuth = firebase.auth();
 
 const providers = {
     googleProvider: new firebase.auth.GoogleAuthProvider(),

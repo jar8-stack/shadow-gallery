@@ -25,9 +25,10 @@ export const Login= () =>{
         <form className="card card-body" onSubmit= {handleSubmit}>
 
           <div className="mb-3">
-            <label className="form-label">Usuario</label>
+            <label className="form-label">Iniciar sesión</label> <br /><br /><br />
+            <label className="form-label" style={{color: "black"}}>e-mail</label>
             <input type="email" className="form-control" onChange= { e=> setUsuario(e.target.value) } value={usuario} />
-            <label className="form-label">Password</label>
+            <label className="form-label" style={{color: "black"}}>Password</label>
             <input type="password" className="form-control" onChange= { e=> setPassword(e.target.value) } value={password}/>
           </div>
           <button type="submit" className="btn btn-primary">Entrar</button>
@@ -54,6 +55,7 @@ function login(usuario, password) {
     .signInWithEmailAndPassword(usuario, password)
     .then(res =>{
         if(res.user) Auth.setLoggedIn(true)
+        
     })
     .catch(e => {
         console.log(e.message)

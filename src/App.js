@@ -10,6 +10,7 @@ import { Registro } from './components/Registrar'
 import { Login } from './components/Login'
 import { Recuperar } from './components/Recuperar'
 import {Chat} from './components/Chat'
+import {Chat_individual} from './components/Chat_individual'
 import Bygoogle from './components/Bygoogle'
 
 
@@ -32,7 +33,8 @@ function App() {
           <Route path="/registro" component={Registro}/>
           <Route path="/recuperar" component={Recuperar}/>
           <Route path="/login" component={Login}/>
-          <Route path="/chat" component={Chat}/>
+          <Route path="/chat" component={Chat}/>          
+          <Route path="/chat_individual/:uid_recibe" component={Chat_individual}/>     
           <Route path="/" component={Inicio}/>
 
 

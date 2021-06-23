@@ -23,10 +23,13 @@ export const Recuperar = () =>{
         <form className="card card-body" onSubmit= {handleSubmit}>
 
           <div className="mb-3">
-            <label className="form-label">Usuario</label>
+            <label className="form-label">Ingrese correo</label> <br/><br/>
             <input type="email" className="form-control" onChange= { e=> setUsuario(e.target.value) } value={usuario} />
+            <br/><br/>
+            <button type="submit" className="btn btn-primary">Entrar</button>
+            
           </div>
-          <button type="submit" className="btn btn-primary">Entrar</button>
+          
 
         </form>
 

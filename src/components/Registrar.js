@@ -1,9 +1,19 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import { Link } from 'react-router-dom'
-import 'firebase/auth'
+
+
 import firebase from 'firebase/app'
 import Auth from 'firebase/app'
 import style from '../../src/googleStyles.css'
+
+
+
+import 'firebase/firestore';
+import 'firebase/auth'
+
+import { useAuthState } from 'react-firebase-hooks/auth';
+import {useCollectionData } from 'react-firebase-hooks/firestore';
+
 
 
 export const Registro= () =>{
@@ -18,7 +28,7 @@ export const Registro= () =>{
     if(password==repassword){
 
 
-          add(usuario, password)
+          add(usuario, password);
   
     }else{
       alert("Contraseñas no coindicen");
@@ -38,16 +48,21 @@ export const Registro= () =>{
         <form className="card card-body" onSubmit= {handleSubmit}>
 
           <div className="mb-3">
-            <label className="form-label">Correo electronico</label>
+            <label className="form-label">Registro de usuario</label> <br/>
+            
+          </div>
+
+          <div className="mb-3">
+            <label className="form-label" style={{color: "black"}}>correo</label>
             <input type="email" className="form-control" onChange= { e=> setUsuario(e.target.value) } value={usuario} />
           </div>
 
           <div className="mb-3">
-            <label className="form-label">Password</label>
+            <label className="form-label" style={{color: "black"}}>Password</label>
             <input type="password" className="form-control" onChange= { e=> setPassword(e.target.value) } value={password} />
           </div>
           <div className="mb-3">
-            <label className="form-label">Repetir password</label>
+            <label className="form-label"  style={{color: "black"}}>Repetir password</label>
             <input type="password" className="form-control" onChange= { e=> setRepassword(e.target.value) } value={repassword} />
           </div>
 
@@ -73,14 +88,30 @@ export const Registro= () =>{
 
 
 
-function add(email, password){
+function add(email, password) {
   firebase
-  .auth()
-  .createUserWithEmailAndPassword(email, password)
-  .then(res =>{
-    if(res.user) Auth.setLoggdIn(true)
-  })
-  .catch( e => {
-    console.log(e.message)
-  })
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(res => {
+          if (res.user){
+              Auth.setLoggedIn(true);
+              addUser(email);
+          } 
+      }).catch(e => {
+          window.alert(e.message);
+          addUser();
+      })
+}
+function addUser() {
+  const usersRef = firebase.firestore().collection('users');  
+  console.log("user sended")
+  var uid = firebase.auth().currentUser.uid;
+  var email = firebase.auth().currentUser.email;
+  var photoURL= firebase.auth().currentUser.photoURL;
+  usersRef.add({
+      uid,
+      email, 
+      photoURL, 
+      lastTime: new Date
+  });   
 }
